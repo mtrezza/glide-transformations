@@ -29,7 +29,6 @@ import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
 import java.security.MessageDigest;
 
 import jp.wasabeef.glide.transformations.internal.FastBlur;
-import jp.wasabeef.glide.transformations.internal.RSBlur;
 
 public class BlurTransformation extends BitmapTransformation {
 
@@ -75,11 +74,7 @@ public class BlurTransformation extends BitmapTransformation {
     paint.setFlags(Paint.FILTER_BITMAP_FLAG);
     canvas.drawBitmap(toTransform, 0, 0, paint);
 
-    try {
-      bitmap = RSBlur.blur(context, bitmap, radius);
-    } catch (RSRuntimeException e) {
-      bitmap = FastBlur.blur(bitmap, radius, true);
-    }
+    bitmap = FastBlur.blur(bitmap, radius, true);
 
     return bitmap;
   }
