@@ -12,13 +12,9 @@ android {
     versionName VERSION_NAME
   }
 
-  // SigningConfigs
-  apply from: '../signingConfigs/debug.gradle', to: android
-
   buildTypes {
     debug {
       debuggable true
-      signingConfig signingConfigs.debug
     }
     release {
       debuggable false
